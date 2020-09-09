@@ -1,40 +1,44 @@
+
 public class GamblingSimulation {
 	// declare constant variable
-	final int STAKE_AMOUNT = 100;
-	final int BET_AMOUNT = 1;
+	final int STAKE = 100;
+	final int BET = 1;
 	final int WINING_CASH = 150;
 	final int LOOSING_CASH = 50;
+	final int NO_OF_DAYS = 20;
 
-	int result = STAKE_AMOUNT;
+	int result;
 
-	// Gambling won or lost on 50% of stake
 	public void checkWinLoose() {
-		while (result != WINING_CASH && result != LOOSING_CASH) {
 
-			// to get random number between 0 or 1.
-			int bettingResult = (int) (Math.floor(Math.random() * 10) % 2);
-			if (bettingResult == 1) {
-				result = result + BET_AMOUNT;
+		for (int i = 1; i <= NO_OF_DAYS; i++) {
+			result = STAKE;
+			while ((result != WINING_CASH) && (result != LOOSING_CASH)) {
+				int randomCheck = (int) Math.floor(Math.random() * 10) % 2;
+
+				if (randomCheck == 1) {
+					result = result + BET;
+
+				} else {
+					result = result - BET;
+				}
+
+			}
+
+			if (result == WINING_CASH) {
+				System.out.println("total Amount won in day:" + i + " amount: " + result);
+
 			} else {
-				result = result - BET_AMOUNT;
+				System.out.println("total amount lost in days:" + i + " amount: " + result);
 			}
 
 		}
 
-		if (result == WINING_CASH) {
-			System.out.println("you won the game");
-			System.out.println("stake: " + result);
-		} else {
-			System.out.println("you loose the game");
-			System.out.println("stake: " + result);
-		}
-
 	}
 
-	public static void main(String args[]) {
-
-		GamblingSimulation gs = new GamblingSimulation();
-		gs.checkWinLoose();
+	public static void main(String[] args) {
+		GamblingSimulation obj = new GamblingSimulation();
+		obj.checkWinLoose();
 	}
 
 }
