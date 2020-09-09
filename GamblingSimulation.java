@@ -4,10 +4,10 @@ public class GamblingSimulation {
 	final int BET = 1;
 	final int WINING_CASH = 150;
 	final int LOOSING_CASH = 50;
-
+	final int NO_OF_DAYS=30;
 	public void checkWinLoose() {
 
-		for (int i = 1; i <= 30; i++) {
+		for (int i = 1; i <= NO_OF_DAYS; i++) {
 			int winCount = 0;
 			int lostCount = 0;
 			int result = STAKE;
